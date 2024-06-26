@@ -1,9 +1,5 @@
 def setup():
     size(800, 800)
-    global game
-
-def mousepressed():
-    game.mouse_pressed(mouseX, mouseY)
     
 class Card:
     def __init__(self, value, x, y, w, h):
