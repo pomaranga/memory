@@ -9,8 +9,7 @@ class Card:
         self.card_width = w
         self.card_height = h
         self.exposed = False
-        self.found = False
-        self.hidden = False
+        self.found_match = False
 
     def show(self):
         if self.exposed or self.found:
