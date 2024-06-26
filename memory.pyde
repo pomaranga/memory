@@ -1,3 +1,10 @@
+def setup():
+    size(800, 800)
+    global game
+
+def mousepressed():
+    game.mouse_pressed(mouseX, mouseY)
+    
 class Card:
     def __init__(self, value, x, y, w, h):
         self.value = value
@@ -16,5 +23,3 @@ class Card:
             fill(150)
             rect(self.x, self.y, self.w, self.h)
             
-def mousepressed():
-    game.mouse_pressed(mouseX, mouseY)
