@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="210mm"
-   height="297mm"
-   viewBox="0 0 210 297"
+   width="86mm"
+   height="86mm"
+   viewBox="0 0 86 86"
    version="1.1"
    id="svg5"
    inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
@@ -24,12 +24,12 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="1.0469406"
-     inkscape:cx="380.15527"
-     inkscape:cy="303.74215"
+     inkscape:zoom="1.28"
+     inkscape:cx="203.90625"
+     inkscape:cy="210.9375"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
-     inkscape:window-x="-8"
+     inkscape:window-x="1912"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
@@ -50,7 +50,8 @@
     <pattern
        inkscape:collect="always"
        xlink:href="#Wavywhite"
-       id="pattern6524" />
+       id="pattern6524"
+       patternTransform="translate(59.957878,62.576706)" />
     <pattern
        inkscape:collect="always"
        patternUnits="userSpaceOnUse"
@@ -71,12 +72,14 @@
        y1="126.80524"
        x2="104.07702"
        y2="72.470329"
-       gradientUnits="userSpaceOnUse" />
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(59.957878,62.576706)" />
   </defs>
   <g
      inkscape:label="Warstwa 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-59.957878,-62.576706)">
     <rect
        style="fill:#8faae5;fill-opacity:1;fill-rule:evenodd;stroke-width:0.683;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none"
        id="rect868"
