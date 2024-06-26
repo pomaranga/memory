@@ -15,3 +15,6 @@ class Card:
         else:
             fill(150)
             rect(self.x, self.y, self.w, self.h)
+            
+def mousepressed():
+    game.mouse_pressed(mouseX, mouseY)
