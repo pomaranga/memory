@@ -1,5 +1,10 @@
 def setup():
-    size(800, 800)
+    size(1600, 800)
+    plansza=loadShape("Memory-plansza odwrocona.svg")
+    krab=loadShape("Memory-plansza krab.svg")
+    rozgw=loadShape("Memory-plansza rozgwiazda.svg")
+    ryba=loadShape("Memory-plansza rybka.svg")
+    meduza=loadShape("Memory-plansza meduza.svg")
     
 class Card:
     def __init__(self, value, x, y, w, h):
