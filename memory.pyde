@@ -14,8 +14,8 @@ def make_board():
     values = [i for i in range(4)]*2
     random.shuffle(values)
     cards = []
-    card_height = height // 2
-    card_width = width // 4
+    card_height = height / 2
+    card_width = width / 4
     for row in range(2):
         row_cards = []
         for column in range(4):
