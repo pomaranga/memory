@@ -36,11 +36,11 @@ class Card:
         self.found_match = False
         self.obraz = karta()
     def karta():
-        if value=0:
+        if value==0:
             return krab
-        elif value=1:
+        elif value==1:
             return ryba
-        elif value=2:
+        elif value==2:
             return rozgw
         else:
             return meduza
