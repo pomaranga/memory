@@ -21,7 +21,7 @@ def make_board():
         for column in range(4):
             value = values.pop()
             card = Card(value, row * card_height, column * card_width, card_height, card_width)
-            row.append(card)
+            row_cards.append(card)
         cards.append(row_cards)
     return cards
     
@@ -36,9 +36,11 @@ class Card:
         self.found_match = False
 
     def show(self):
-        if self.exposed or self.found:
+        if self.exposed or self.found_match:
             image(self.obraz, self.x, self.y, self.w, self.h)
         else:
             fill(150)
             rect(self.x, self.y, self.w, self.h)
+            
+# teraz czas na funkcję draw i wyświetylenie kart wczytanych w setup'ie i stworzonych w make_board
             
