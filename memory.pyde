@@ -2,7 +2,7 @@ import random
 
 def setup():
     size(1600, 800)
-    global cards
+    global cards, rewers
     cards = make_board()
     rewers=loadShape("Memory-plansza odwrocona.svg")
     krab=loadShape("Memory-plansza krab.svg")
@@ -13,6 +13,7 @@ def setup():
 def make_board():
     values = [i for i in range(4)]*2
     random.shuffle(values)
+    print(values)
     cards = []
     card_height = height / 2
     card_width = width / 4
@@ -20,7 +21,7 @@ def make_board():
         row_cards = []
         for column in range(4):
             value = values.pop()
-            card = Card(value, row * card_height, column * card_width, card_height, card_width)
+            card = Card(value, column * card_height, row * card_width, card_height, card_width)
             cards.append(card)
     return cards
     
@@ -33,15 +34,15 @@ class Card:
         self.card_height = h
         self.exposed = False
         self.found_match = False
+        #self.obraz = ( obraz aktualnej karty zależny od value )
 
     def show(self):
         if self.exposed or self.found_match:
-            image(self.obraz, self.x, self.y, self.w, self.h)
+            image(self.obraz, self.x, self.y, self.w, self.h) # wyświetlenie grafiki karty
         else:
             fill(150)
-            rect(self.x, self.y, self.w, self.h)
+            shape(rewers, self.xpos, self.ypos, self.card_width, self.card_height) # wyświetlenie grafiki rewersu
 def draw():
     for card in cards:
-        card.show()    
-# teraz czas na funkcję draw i wyświetylenie kart wczytanych w setup'ie i stworzonych w make_board
+        card.show()
             
