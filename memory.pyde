@@ -14,15 +14,14 @@ def make_board():
     values = [i for i in range(4)]*2
     random.shuffle(values)
     cards = []
-    card_height = height // 2
-    card_width = width // 4
+    card_height = height / 2
+    card_width = width / 4
     for row in range(2):
         row_cards = []
         for column in range(4):
             value = values.pop()
             card = Card(value, row * card_height, column * card_width, card_height, card_width)
-            row_cards.append(card)
-        cards.append(row_cards)
+            cards.append(card)
     return cards
     
 class Card:
@@ -41,6 +40,8 @@ class Card:
         else:
             fill(150)
             rect(self.x, self.y, self.w, self.h)
-            
+def draw():
+    for card in cards:
+        card.show()    
 # teraz czas na funkcję draw i wyświetylenie kart wczytanych w setup'ie i stworzonych w make_board
             
