@@ -4,7 +4,7 @@ def setup():
     size(1600, 800)
     global cards
     cards = make_board()
-    plansza=loadShape("Memory-plansza odwrocona.svg")
+    rewers=loadShape("Memory-plansza odwrocona.svg")
     krab=loadShape("Memory-plansza krab.svg")
     rozgw=loadShape("Memory-plansza rozgwiazda.svg")
     ryba=loadShape("Memory-plansza rybka.svg")
