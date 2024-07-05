@@ -1,10 +1,29 @@
+import random
+
 def setup():
     size(1600, 800)
+    global cards
+    cards = make_board()
     plansza=loadShape("Memory-plansza odwrocona.svg")
     krab=loadShape("Memory-plansza krab.svg")
     rozgw=loadShape("Memory-plansza rozgwiazda.svg")
     ryba=loadShape("Memory-plansza rybka.svg")
     meduza=loadShape("Memory-plansza meduza.svg")
+
+def make_board():
+    values = [i for i in range(4)]*2
+    random.shuffle(values)
+    cards = []
+    card_height = height // 2
+    card_width = width // 4
+    for row in range(2):
+        row_cards = []
+        for column in range(4):
+            value = values.pop()
+            card = Card(value, row * card_height, column * card_width, card_height, card_width)
+            row.append(card)
+        cards.append(row_cards)
+    return cards
     
 class Card:
     def __init__(self, value, x, y, w, h):
