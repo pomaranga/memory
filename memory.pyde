@@ -1,5 +1,8 @@
 import random
 
+menu = 0
+menu_w_trakcie_gry = 1
+
 class CountdownTimer:
     def __init__(self, duration):
         self.duration = duration
@@ -56,7 +59,7 @@ class Card:
 
 def setup():
     size(1600, 800)
-    global cards, rewers, krab, rozgw, ryba, meduza, timer, Punkty
+    global cards, rewers, krab, rozgw, ryba, meduza, timer, Punkty, stan_gry
     cards = make_board()
     rewers = loadShape("Memory-plansza odwrocona.svg")
     krab = loadShape("Memory-plansza krab.svg")
@@ -65,6 +68,13 @@ def setup():
     meduza = loadShape("Memory-plansza meduza.svg")
     textSize(32)
     timer = CountdownTimer(30)  # Czas jaki odlicza tiemr do przegranej
+    Punkty = 0
+    stan_gry = menu
+    
+def initialize_game():
+    global cards, timer, Punkty
+    cards = make_board()
+    timer = CountdownTimer(30)
     Punkty = 0
 
 def make_board():
@@ -81,23 +91,43 @@ def make_board():
     return cards
 
 def draw():
+    global stan_gry
     background(143,170,229,255)  # Czyszczenie tła przed rysowaniem, bo napisy nachodziły na siebie. TROCHE MI ZAJELO SZUKANIE KOLORU TEGO CO JEST ZA KARTAMI -_-
-    timer.update()
-    if timer.finished:
-        timer.show_game_over()
-    else:
-        for card in cards:
-            card.show()
-        timer.display(width - 100, 50)  # Timer w górnym prawym rogu
-        display_Punkty(width - 100, 100)  # Punkty pod czasem
+    
+    if stan_gry == menu:
+        display_menu()
+    elif stan_gry == menu_w_trakcie_gry:
+        timer.update()
+        if timer.finished:
+            global stan_gry
+            stan_gry = menu
+        else:
+            for card in cards:
+                card.show()
+            timer.display(width - 100, 50)  # Timer w górnym prawym rogu
+            display_Punkty(width - 100, 100)  # Punkty pod czasem
+        
+def display_menu():
+    fill(0)
+    textSize(64)
+    textAlign(CENTER, CENTER)
+    text("Memory", width / 2, height / 2 - 100)
+    textSize(32)
+    text("Kliknij aby rozpoczac gre", width / 2, height / 2)
         
 def mousePressed():
-    global Punkty
-    for card in cards:
-        if card.xpos < mouseX < card.xpos + card.card_width and card.ypos < mouseY < card.ypos + card.card_height:
-            if not card.exposed:
-                card.exposed = True
-                Punkty += 1  # Punkty za odsloniecie karty. Dałem 1 ale mozna zwiekszysz czy coś
+    global Punkty, stan_gry, cards, timer
+    if stan_gry == menu:
+        stan_gry = menu_w_trakcie_gry
+        cards = make_board()
+        timer = CountdownTimer(30)
+        Punkty = 0
+    elif stan_gry == menu_w_trakcie_gry:
+        for card in cards:
+            if card.xpos < mouseX < card.xpos + card.card_width and card.ypos < mouseY < card.ypos + card.card_height:
+                if not card.exposed:
+                    card.exposed = True
+                    Punkty += 1  # Punkty za odsloniecie karty. Dałem 1 ale mozna zwiekszysz czy coś
                 
 def display_Punkty(x, y):
     fill(0)
