@@ -62,10 +62,10 @@ def setup():
     global cards, rewers, krab, rozgw, ryba, meduza, timer, Punkty, stan_gry
     cards = make_board()
     rewers = loadShape("Memory-plansza odwrocona.svg")
-    krab = loadShape("Memory-plansza krab.svg")
-    rozgw = loadShape("Memory-plansza rozgwiazda.svg")
-    ryba = loadShape("Memory-plansza rybka.svg")
-    meduza = loadShape("Memory-plansza meduza.svg")
+    krab = loadShape("crab-animal-crustacean-svgrepo-com.svg")
+    rozgw = loadShape("turtle-4-svgrepo-com.svg")
+    ryba = loadShape("fish-svgrepo-com.svg")
+    meduza = loadShape("octopus-1-svgrepo-com.svg")
     textSize(32)
     timer = CountdownTimer(30)  # Czas jaki odlicza tiemr do przegranej
     Punkty = 0
@@ -114,7 +114,7 @@ def display_menu():
     text("Memory", width / 2, height / 2 - 100)
     textSize(32)
     text("Kliknij aby rozpoczac gre", width / 2, height / 2)
-        
+            
 def mousePressed():
     global Punkty, stan_gry, cards, timer
     if stan_gry == menu:
@@ -125,9 +125,23 @@ def mousePressed():
     elif stan_gry == menu_w_trakcie_gry:
         for card in cards:
             if card.xpos < mouseX < card.xpos + card.card_width and card.ypos < mouseY < card.ypos + card.card_height:
-                if not card.exposed:
+                if not card.exposed and not card.found_match:
                     card.exposed = True
-                    Punkty += 1  # Punkty za odsloniecie karty. Dałem 1 ale mozna zwiekszysz czy coś
+                    check_matches()
+                    break
+
+def check_matches():
+    global cards, Punkty
+    exposed_cards = [card for card in cards if card.exposed and not card.found_match]
+    if len(exposed_cards) == 2:
+        if exposed_cards[0].value == exposed_cards[1].value:
+            for card in exposed_cards:
+                card.found_match = True
+            Punkty += 1  # Zwiększanie punktacji za znalezienie pary kart
+        else:
+            for card in exposed_cards:
+                card.found_match = False
+                card.exposed = False
                 
 def display_Punkty(x, y):
     fill(0)
