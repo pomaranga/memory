@@ -59,7 +59,7 @@ class Card:
 
 def setup():
     size(1600, 800)
-    global cards, rewers, krab, rozgw, ryba, meduza, timer, Punkty, stan_gry
+    global cards, rewers, krab, rozgw, ryba, meduza, timer, Punkty, stan_gry, najlepsze wyniki
     cards = make_board()
     rewers = loadShape("Memory-plansza odwrocona.svg")
     krab = loadShape("crab-animal-crustacean-svgrepo-com.svg")
@@ -70,6 +70,7 @@ def setup():
     timer = CountdownTimer(30)  # Czas jaki odlicza tiemr do przegranej
     Punkty = 0
     stan_gry = menu
+    najlepsze_wyniki = []
     
 def initialize_game():
     global cards, timer, Punkty
@@ -101,6 +102,7 @@ def draw():
         if timer.finished:
             global stan_gry
             stan_gry = menu
+            update_high_scores()  # aktualizacja najlepszych wyników
         else:
             for card in cards:
                 card.show()
@@ -114,6 +116,13 @@ def display_menu():
     text("Memory", width / 2, height / 2 - 100)
     textSize(32)
     text("Kliknij aby rozpoczac gre", width / 2, height / 2)
+    text("Najlepsze wyniki: " + ', '.join(map(str, najlepsze_wyniki)), width / 2, height / 2 + 50)  # Wyświetlanie najlepszych wyników
+
+def update_high_scores():
+    global najlepsze_wyniki, Punkty
+    najlepsze_wyniki.append(Punkty)  # dodanie wyniku do listy najlepszych wyników
+    najlepsze_wyniki.sort(reverse=True)  # sortowanie od najwiekszego
+
             
 def mousePressed():
     global Punkty, stan_gry, cards, timer
