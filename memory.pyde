@@ -122,6 +122,7 @@ def update_high_scores():
     global najlepsze_wyniki, Punkty
     najlepsze_wyniki.append(Punkty)  # dodanie wyniku do listy najlepszych wyników
     najlepsze_wyniki.sort(reverse=True)  # sortowanie od najwiekszego
+    najlepsze_wyniki = najlepsze_wyniki[:5]
 
             
 def mousePressed():
