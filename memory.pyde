@@ -21,12 +21,12 @@ class CountdownTimer:
         textSize(32)
         textAlign(CENTER, CENTER)
         text(str(int(self.time_left)), x, y)
-    
-    def show_game_over(self):
+        
+    def show_game_over(self): #niewykorzystana funkcja
         fill(255, 0, 0)
         textSize(64)
         textAlign(CENTER, CENTER)
-        text("Przegrales", width / 2, height / 2)
+        text(u"Przegrałeś", width / 2, height / 2)
 
 class Card:
     def __init__(self, value, x, y, w, h):
@@ -59,7 +59,7 @@ class Card:
 
 def setup():
     size(1600, 800)
-    global cards, rewers, krab, rozgw, ryba, meduza, timer, Punkty, stan_gry, najlepsze wyniki
+    global cards, rewers, krab, rozgw, ryba, meduza, timer, Punkty, stan_gry, najlepsze_wyniki
     cards = make_board()
     rewers = loadShape("Memory-plansza odwrocona.svg")
     krab = loadShape("crab-animal-crustacean-svgrepo-com.svg")
@@ -106,8 +106,8 @@ def draw():
         else:
             for card in cards:
                 card.show()
-            timer.display(width - 100, 50)  # Timer w górnym prawym rogu
-            display_Punkty(width - 100, 100)  # Punkty pod czasem
+            timer.display(width - 300, 50)  # Timer w górnym prawym rogu
+            display_Punkty(width - 300, 100)  # Punkty pod czasem
         
 def display_menu():
     fill(0)

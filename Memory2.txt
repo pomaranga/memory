@@ -1,3 +1,4 @@
+import random
 board = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'] * 2
 random.shuffle(board)
 
@@ -18,7 +19,7 @@ pairs_found = 0
 while not game_over(revealed):
     display_board(board, revealed)
     
-        while True:
+    while True:
         try:
             guess1 = int(input('Choose first position (0-7): '))
             guess2 = int(input('Choose second position (0-7): '))
@@ -31,10 +32,10 @@ while not game_over(revealed):
             print("Invalid input, please enter a number between 0 and 7.")
     
         if board[guess1] == board[guess2]:
-        pairs_found += 1
-        revealed[guess1] = True
-        revealed[guess2] = True
-        print("Dobra robota. Znalazłeś parę")
+          pairs_found += 1
+          revealed[guess1] = True
+          revealed[guess2] = True
+          print("Dobra robota. Znalazłeś parę")
     else:
         print("Spróbuj ponownie")
     
